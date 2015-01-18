@@ -20,11 +20,9 @@
 
     <style name="nLiveoDrawer" parent="nLiveo.Theme.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
-        <item name="colorPrimaryDark">@color/nliveo_blue_alpha_colorPrimaryDark</item>
+        <item name="colorPrimary">@color/nliveo_green_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/nliveo_green_alpha_colorPrimaryDark</item>
         <item name="colorAccent">@color/nliveo_red_alpha_colorPrimaryDark</item>
     </style>
-
-
 
 </resources>

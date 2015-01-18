@@ -25,6 +25,7 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
     @Override
     public void onInt(Bundle bundle) {
         this.setNavigationListener(this);
+        this.setDefaultStartPositionNavigation(0);
         mListNameItem = new ArrayList<>();
         mListNameItem.add(0, "Notes");
         mListNameItem.add(1, "Reminders");
@@ -36,9 +37,10 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         mListIconItem.add(2, R.drawable.ic_notifications_black_24dp); //Item no icon set 0
 
         ArrayList<Integer> mListHeaderItem = new ArrayList<>();
-        mListHeaderItem.add(3);
+        mListHeaderItem.add(4);
 
 
+        this.setFooterNavigationVisible(true);
         this.setFooterInformationDrawer("Feedback", R.drawable.ic_message_black_24dp);
         SparseIntArray mSparseCounterItem = new SparseIntArray(); //indicate all items that have a counter
         //this.setFooterNavigationVisible(false);
@@ -84,18 +86,21 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         Fragment mFragment;
         switch(position) {
             case 0:
+                this.getToolbar().setTitle("Notes");
                 mFragment = new NotesFragment().newInstance();
                 if (mFragment != null){
                     mFragmentManager.beginTransaction().replace(containerLayout, mFragment).commit();
                 }
                 break;
             case 1:
+                this.getToolbar().setTitle("Reminders");
                 mFragment = new RemindersFragment().newInstance();
                 if (mFragment != null){
                     mFragmentManager.beginTransaction().replace(containerLayout, mFragment).commit();
                 }
                 break;
             case 2:
+                this.getToolbar().setTitle("Upcoming Events");
                 mFragment = new RemindersFragment().newInstance();
                 if (mFragment != null){
                     mFragmentManager.beginTransaction().replace(containerLayout, mFragment).commit();
