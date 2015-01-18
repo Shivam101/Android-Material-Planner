@@ -23,7 +23,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
-    compile 'com.balysv.materialmenu:material-menu:1.5.0'
     compile 'com.getbase:floatingactionbutton:1.5.1'
     compile 'com.android.support:appcompat-v7:21.+'
+    compile 'br.com.liveo:navigationdrawer-material:1.0.0'
 }

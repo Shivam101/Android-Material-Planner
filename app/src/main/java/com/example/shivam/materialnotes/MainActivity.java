@@ -2,18 +2,127 @@ package com.example.shivam.materialnotes;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.SparseIntArray;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 
-public class MainActivity extends ActionBarActivity {
+import br.liveo.interfaces.NavigationLiveoListener;
+import br.liveo.navigationliveo.NavigationLiveo;
 
-    FloatingActionButton mNotes, mReminders;
+
+public class MainActivity extends NavigationLiveo implements NavigationLiveoListener {
+
+    public ArrayList<String> mListNameItem;
+    @Override
+    public void onInt(Bundle bundle) {
+        this.setNavigationListener(this);
+        mListNameItem = new ArrayList<>();
+        mListNameItem.add(0, "Notes");
+        mListNameItem.add(1, "Reminders");
+        mListNameItem.add(2, "Upcoming Events");
+
+        ArrayList<Integer> mListIconItem = new ArrayList<>();
+        mListIconItem.add(0, R.drawable.ic_create_black_24dp);
+        mListIconItem.add(1, R.drawable.ic_alarm_black_24dp); //Item no icon set 0
+        mListIconItem.add(2, R.drawable.ic_notifications_black_24dp); //Item no icon set 0
+
+        ArrayList<Integer> mListHeaderItem = new ArrayList<>();
+        mListHeaderItem.add(3);
+
+
+        this.setFooterInformationDrawer("Feedback", R.drawable.ic_message_black_24dp);
+        SparseIntArray mSparseCounterItem = new SparseIntArray(); //indicate all items that have a counter
+        //this.setFooterNavigationVisible(false);
+        this.setNavigationAdapter(mListNameItem, mListIconItem, mListHeaderItem, mSparseCounterItem);
+
+        //this.setNavigationAdapter(mListNameItem,mListIconItem);
+    }
+
+    @Override
+    public void onUserInformation() {
+        this.mUserName.setText("Shivam Bhalla");
+        this.mUserEmail.setText("shivam.bhalla10@gmail.com");
+        this.mUserBackground.setImageResource(R.drawable.landscape_wall);
+        this.mUserPhoto.setImageResource(R.drawable.ic_launcher);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemClickNavigation(int position, int containerLayout) {
+        FragmentManager mFragmentManager = getSupportFragmentManager();
+        Fragment mFragment;
+        switch(position) {
+            case 0:
+                mFragment = new NotesFragment().newInstance();
+                if (mFragment != null){
+                    mFragmentManager.beginTransaction().replace(containerLayout, mFragment).commit();
+                }
+                break;
+            case 1:
+                mFragment = new RemindersFragment().newInstance();
+                if (mFragment != null){
+                    mFragmentManager.beginTransaction().replace(containerLayout, mFragment).commit();
+                }
+                break;
+            case 2:
+                mFragment = new RemindersFragment().newInstance();
+                if (mFragment != null){
+                    mFragmentManager.beginTransaction().replace(containerLayout, mFragment).commit();
+                }
+                break;
+
+        }
+
+
+    }
+
+    @Override
+    public void onPrepareOptionsMenuNavigation(Menu menu, int i, boolean b) {
+
+    }
+
+    @Override
+    public void onClickFooterItemNavigation(View view) {
+
+    }
+
+    @Override
+    public void onClickUserPhotoNavigation(View view) {
+
+    }
+
+    /*FloatingActionButton mNotes, mReminders;
     Toolbar toolbar;
 
     @Override
@@ -63,5 +172,5 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

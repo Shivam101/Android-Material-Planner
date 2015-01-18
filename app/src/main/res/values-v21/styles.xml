@@ -18,5 +18,13 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <style name="nLiveoDrawer" parent="nLiveo.Theme.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/nliveo_blue_alpha_colorPrimaryDark</item>
+        <item name="colorAccent">@color/nliveo_red_alpha_colorPrimaryDark</item>
+    </style>
+
+
 
 </resources>
