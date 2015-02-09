@@ -53,8 +53,7 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
     public void onUserInformation() {
         this.mUserName.setText("Shivam Bhalla");
         this.mUserEmail.setText("shivam.bhalla10@gmail.com");
-        this.mUserBackground.setImageResource(R.drawable.landscape_wall);
-        this.mUserPhoto.setImageResource(R.drawable.ic_launcher);
+        this.mUserBackground.setImageResource(R.drawable.background2);
     }
 
 

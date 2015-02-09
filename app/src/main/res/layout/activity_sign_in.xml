@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.shivam.materialnotes.SignInActivity"
+    >
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="230dp"
+        android:layout_alignParentTop="true"
+        android:elevation="4dp"
+        android:fitsSystemWindows="true"
+        android:src="@drawable/gradient_image"
+        android:gravity="fill_horizontal"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@drawable/background1">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign In"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Username"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="30dp"
+        android:id="@+id/usernameET"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Password"
+        android:layout_below="@id/usernameET"
+        android:id="@+id/passwordET"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign In"
+        android:background="@color/nliveo_green_colorPrimary"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/passwordET"
+        android:id="@+id/done"
+        android:layout_marginTop="50dp"
+         />
+
+    <com.gc.materialdesign.views.ButtonFlat
+        android:id="@+id/register"
+        android:text="New User ?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/nliveo_green_colorPrimary"
+        android:layout_below="@id/done"
+        android:layout_marginTop="30dp"
+        />
+
+
+
+</RelativeLayout>

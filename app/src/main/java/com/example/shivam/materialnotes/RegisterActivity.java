@@ -1,32 +1,24 @@
 package com.example.shivam.materialnotes;
 
-import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MakeNoteActivity extends ActionBarActivity {
+public class RegisterActivity extends ActionBarActivity {
 
-    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_make_note);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp);
-        getSupportActionBar().setTitle("");
+        setContentView(R.layout.activity_register);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_make_note, menu);
+        getMenuInflater().inflate(R.menu.menu_register, menu);
         return true;
     }
 
@@ -39,11 +31,6 @@ public class MakeNoteActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
-        }
-        else if(id == android.R.id.home)
-        {
-            NavUtils.navigateUpFromSameTask(this);
             return true;
         }
 

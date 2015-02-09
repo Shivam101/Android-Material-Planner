@@ -20,7 +20,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/nliveo_green_colorPrimary</item>
         <item name="colorPrimaryDark">@color/nliveo_green_alpha_colorPrimaryDark</item>
-        <item name="colorAccent">@color/nliveo_red_alpha_colorPrimaryDark</item>
+        <item name="colorAccent">@color/accentColor</item>
     </style>
 
 

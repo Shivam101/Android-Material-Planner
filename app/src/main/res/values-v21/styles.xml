@@ -2,10 +2,8 @@
 <resources>
 
     <style name="AppTheme" parent="AppTheme.Base">
-        <item name="android:colorPrimary">@color/primary</item>
-        <item name="android:colorPrimaryDark">@color/primaryDark</item>
-        <item name="android:colorAccent">@color/accentColor</item>
         <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowAllowEnterTransitionOverlap">true</item>
         <item name="android:windowAllowReturnTransitionOverlap">true</item>
 
@@ -22,7 +20,8 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/nliveo_green_colorPrimary</item>
         <item name="colorPrimaryDark">@color/nliveo_green_alpha_colorPrimaryDark</item>
-        <item name="colorAccent">@color/nliveo_red_alpha_colorPrimaryDark</item>
+        <item name="colorAccent">@color/accentColor</item>
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
 </resources>

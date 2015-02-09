@@ -4,9 +4,21 @@
     android:layout_height="match_parent"
     tools:context="com.example.shivam.materialnotes.MakeNoteActivity">
 
-    <include
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+        android:layout_width="fill_parent"
+        android:layout_height="250dp"
+        android:layout_alignParentTop="true"
+        android:elevation="4dp"
+        android:gravity="fill_horizontal"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/primary">
+
+
+    </android.support.v7.widget.Toolbar>
+
 
 
 </RelativeLayout>
