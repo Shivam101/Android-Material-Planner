@@ -17,7 +17,9 @@
         <activity
             android:name=".MakeNoteActivity"
             android:label="@string/title_activity_make_note"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme2"
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.shivam.materialnotes.MainActivity" />
@@ -43,7 +45,9 @@
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register"
-            android:parentActivityName=".SignInActivity" >
+            android:parentActivityName=".SignInActivity"
+            android:theme="@style/AppTheme"
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.shivam.materialnotes.SignInActivity" />

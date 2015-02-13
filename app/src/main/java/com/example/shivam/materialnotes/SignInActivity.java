@@ -9,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.example.shivam.materialnotes.MyApplication;
 
 import com.gc.materialdesign.views.ButtonFlat;
@@ -43,12 +45,13 @@ public class SignInActivity extends ActionBarActivity {
                 password=password.trim();
                 if(password.isEmpty()||username.isEmpty())
                 {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(SignInActivity.this);
-                    builder.setMessage("Details cannot be blank.");
-                    builder.setTitle("Oops !");
-                    builder.setPositiveButton(android.R.string.ok, null);
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
+
+                    MaterialDialog.Builder builder = new MaterialDialog.Builder(SignInActivity.this);
+                    builder.content("Details cannot be blank.");
+                    builder.title("Oops !");
+                    builder.positiveText(android.R.string.ok);
+                    builder.iconRes(R.drawable.ic_error_red_36dp);
+                    builder.show();
                 }
                 else
                 {
@@ -65,12 +68,12 @@ public class SignInActivity extends ActionBarActivity {
                             }
                             else
                             {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(SignInActivity.this);
-                                builder.setMessage("Couldn't Sign In! Try again");
-                                builder.setTitle("Ouch !");
-                                builder.setPositiveButton(android.R.string.ok, null);
-                                AlertDialog dialog = builder.create();
-                                dialog.show();
+                                MaterialDialog.Builder builder = new MaterialDialog.Builder(SignInActivity.this);
+                                builder.content("Couldn't Sign In! Try again");
+                                builder.title("Ouch !");
+                                builder.positiveText(android.R.string.ok);
+                                builder.iconRes(R.drawable.ic_error_red_36dp);
+                                builder.show();
                             }
                         }
                     });

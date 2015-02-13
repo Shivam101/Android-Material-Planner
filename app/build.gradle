@@ -34,4 +34,7 @@ dependencies {
     compile 'com.github.navasmdc:MaterialDesign:1.+@aar'
     compile 'com.parse.bolts:bolts-android:1.+'
     compile fileTree(dir: 'libs', include: 'Parse-*.jar')
+    compile 'com.afollestad:material-dialogs:0.6.2.4'
+    compile 'com.rengwuxian.materialedittext:library:1.8.2'
+    compile 'com.r0adkll:slidableactivity:2.0.2'
 }

@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:materialdesign="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.shivam.materialnotes.SignInActivity"
     >
     <android.support.v7.widget.Toolbar
@@ -16,7 +17,7 @@
         android:gravity="fill_horizontal"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
         android:minHeight="?attr/actionBarSize"
-        android:background="@drawable/background1">
+        android:background="@drawable/background3">
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,10 +37,15 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <EditText
+    <com.rengwuxian.materialedittext.MaterialEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Username"
+        android:maxLines="1"
+        android:singleLine="true"
+        app:primaryColor="@color/accentColor"
+        app:floatingLabel="highlight"
+        app:floatingLabelText="Username"
         android:layout_below="@id/toolbar"
         android:layout_marginTop="30dp"
         android:id="@+id/usernameET"
@@ -47,10 +53,15 @@
         android:layout_marginRight="20dp"
         />
 
-    <EditText
+    <com.rengwuxian.materialedittext.MaterialEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Password"
+        android:maxLines="1"
+        android:singleLine="true"
+        app:primaryColor="@color/accentColor"
+        app:floatingLabel="highlight"
+        app:floatingLabelText="Password"
         android:layout_below="@id/usernameET"
         android:id="@+id/passwordET"
         android:layout_marginLeft="20dp"
@@ -72,7 +83,7 @@
 
     <com.gc.materialdesign.views.ButtonFlat
         android:id="@+id/register"
-        android:text="New User ?"
+        android:text="OR CREATE A NEW ACCOUNT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
