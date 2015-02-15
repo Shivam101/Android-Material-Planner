@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.shivam.materialnotes.RegisterActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="230dp"
+        android:layout_alignParentTop="true"
+        android:elevation="4dp"
+        android:fitsSystemWindows="true"
+        android:src="@drawable/gradient_image"
+        android:gravity="fill_horizontal"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@drawable/background3">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Almost done.."
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your full Name"
+        android:maxLines="1"
+        android:singleLine="true"
+        app:primaryColor="@color/accentColor"
+        app:floatingLabel="highlight"
+        app:floatingLabelText="Name"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="30dp"
+        android:id="@+id/setnameET"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your email address"
+        android:maxLines="1"
+        android:singleLine="true"
+        app:primaryColor="@color/accentColor"
+        app:floatingLabel="highlight"
+        app:floatingLabelText="Email Address"
+        android:layout_below="@id/setnameET"
+        android:id="@+id/setemailET"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        />
+
+    <com.getbase.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        fab:fab_colorNormal="@color/accentColor"
+        fab:fab_colorPressed="@color/accentColorPressed"
+        fab:fab_size="normal"
+        fab:fab_icon="@drawable/ic_done_white_24dp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/setemailET"
+        android:id="@+id/registration2"
+        android:layout_marginTop="70dp"
+        />
+
+
+
+
+</RelativeLayout>

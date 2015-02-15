@@ -24,23 +24,27 @@ import br.liveo.navigationliveo.NavigationLiveo;
 public class MainActivity extends NavigationLiveo implements NavigationLiveoListener {
 
     public ArrayList<String> mListNameItem;
-    //ParseUser currentUser;
+    ParseUser currentUser;
     @Override
     public void onInt(Bundle bundle) {
-        this.setNavigationListener(this);
-        this.setDefaultStartPositionNavigation(0);
-        mListNameItem = new ArrayList<>();
-        mListNameItem.add(0, "Notes");
-        mListNameItem.add(1, "Reminders");
-        mListNameItem.add(2, "Upcoming Events");
-//        currentUser = ParseUser.getCurrentUser();
-        /*if(currentUser==null)
+        currentUser = ParseUser.getCurrentUser();
+
+        if(currentUser==null)
         {
             Intent i = new Intent(MainActivity.this, SignInActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
-        }*/
+        }
+        this.setNavigationListener(this);
+        this.setDefaultStartPositionNavigation(0);
+        this.removeSelectorNavigation();
+        this.setColorSelectedItemNavigation(R.color.nliveo_green_colorPrimary);
+        mListNameItem = new ArrayList<>();
+        mListNameItem.add(0, "Notes");
+        mListNameItem.add(1, "Reminders");
+        mListNameItem.add(2, "Upcoming Events");
+
 
         ArrayList<Integer> mListIconItem = new ArrayList<>();
         mListIconItem.add(0, R.drawable.ic_create_black_24dp);
@@ -62,10 +66,14 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
 
     @Override
     public void onUserInformation() {
-        this.mUserName.setText("Shivam Bhalla");
-        //this.mUserEmail.setText(currentUser.getEmail());
-        this.mUserBackground.setImageResource(R.drawable.background2);
+
+            currentUser = ParseUser.getCurrentUser();
+            this.mUserName.setText(currentUser.getString("Name"));
+            this.mUserEmail.setText(currentUser.getEmail());
+            this.mUserBackground.setImageResource(R.drawable.background2);
+
     }
+
 
 
     @Override
@@ -85,6 +93,14 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+        else if(id == R.id.action_logout)
+        {
+            ParseUser.logOut();
+            Intent i = new Intent(MainActivity.this, SignInActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);

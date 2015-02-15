@@ -8,5 +8,6 @@
     <string name="title_activity_make_reminder">New Reminder</string>
     <string name="title_activity_sign_in">Sign In</string>
     <string name="title_activity_register">Register</string>
+    <string name="title_activity_register_activity2">RegisterActivity2</string>
 
 </resources>

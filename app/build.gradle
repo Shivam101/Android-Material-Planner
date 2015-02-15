@@ -37,4 +37,5 @@ dependencies {
     compile 'com.afollestad:material-dialogs:0.6.2.4'
     compile 'com.rengwuxian.materialedittext:library:1.8.2'
     compile 'com.r0adkll:slidableactivity:2.0.2'
+    compile 'com.android.support:cardview-v7:21.0.+'
 }

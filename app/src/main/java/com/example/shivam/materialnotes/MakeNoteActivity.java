@@ -24,7 +24,6 @@ public class MakeNoteActivity extends ActionBarActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp);
         getSupportActionBar().setTitle("");
-
         Slidr.attach(this);
     }
 
