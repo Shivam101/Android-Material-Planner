@@ -1,6 +1,8 @@
 package com.example.shivam.materialnotes;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ import com.parse.ParseUser;
 
 public class SignInActivity extends ActionBarActivity {
 
+    Dialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,11 +58,13 @@ public class SignInActivity extends ActionBarActivity {
                 }
                 else
                 {
+                    SignInActivity.this.progressDialog= ProgressDialog.show(SignInActivity.this, "", "Signing In...", true);
                     ParseUser.logInInBackground(username,password,new LogInCallback() {
                         @Override
                         public void done(ParseUser parseUser, ParseException e) {
                             if(e==null)
                             {
+                                SignInActivity.this.progressDialog.dismiss();
                                 MyApplication.updateInstallation(parseUser);
                                 Intent i = new Intent(SignInActivity.this,MainActivity.class);
                                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -68,6 +73,7 @@ public class SignInActivity extends ActionBarActivity {
                             }
                             else
                             {
+                                SignInActivity.this.progressDialog.dismiss();
                                 MaterialDialog.Builder builder = new MaterialDialog.Builder(SignInActivity.this);
                                 builder.content("Couldn't Sign In! Try again");
                                 builder.title("Ouch !");

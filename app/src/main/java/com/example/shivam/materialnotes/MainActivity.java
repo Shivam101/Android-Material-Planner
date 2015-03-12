@@ -39,7 +39,7 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         this.setNavigationListener(this);
         this.setDefaultStartPositionNavigation(0);
         this.removeSelectorNavigation();
-        this.setColorSelectedItemNavigation(R.color.nliveo_green_colorPrimary);
+        this.setColorSelectedItemNavigation(R.color.nliveo_blue_colorPrimary);
         mListNameItem = new ArrayList<>();
         mListNameItem.add(0, "Notes");
         mListNameItem.add(1, "Reminders");
@@ -56,7 +56,7 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
 
 
         this.setFooterNavigationVisible(true);
-        this.setFooterInformationDrawer("Feedback", R.drawable.ic_message_black_24dp);
+        this.setFooterInformationDrawer("Feedback", R.drawable.ic_settings_black_24dp);
         SparseIntArray mSparseCounterItem = new SparseIntArray(); //indicate all items that have a counter
         //this.setFooterNavigationVisible(false);
         this.setNavigationAdapter(mListNameItem, mListIconItem, mListHeaderItem, mSparseCounterItem);
@@ -68,9 +68,18 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
     public void onUserInformation() {
 
             currentUser = ParseUser.getCurrentUser();
+        if(currentUser!=null) {
             this.mUserName.setText(currentUser.getString("Name"));
             this.mUserEmail.setText(currentUser.getEmail());
-            this.mUserBackground.setImageResource(R.drawable.background2);
+            this.mUserBackground.setImageResource(R.drawable.background3);
+        }
+        else
+        {
+            Intent i = new Intent(MainActivity.this, SignInActivity.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
+        }
 
     }
 

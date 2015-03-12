@@ -19,6 +19,9 @@ public class NotesFragment extends Fragment {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_notes, null);
         mNotes = (FloatingActionButton) root.findViewById(R.id.make_notes);
         mReminders = (FloatingActionButton) root.findViewById(R.id.make_reminder);
+        SearchBox sb = (SearchBox)root.findViewById(R.id.searchBox);
+        sb.setLogoText("Search for notes or reminders");
+
         mNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
