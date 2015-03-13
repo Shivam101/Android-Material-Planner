@@ -11,6 +11,9 @@
     <color name="pink_pressed">#ec407a</color>
     <color name="half_black">#808080</color>
     <color name="black_semi_transparent">#B2000000</color>
+    <color name="refresh_blue">@color/nliveo_blue_colorPrimary</color>
+    <color name="refresh_red">@color/nliveo_red_colorPrimary</color>
+
 
 
 </resources>
