@@ -1,6 +1,7 @@
 package com.example.shivam.materialnotes;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.parse.ParseObject;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 /**
@@ -40,6 +42,11 @@ public class NotesAdapter extends ArrayAdapter<ParseObject> {
         ParseObject note = mNotes.get(position);
         holder.titleLabel.setText(note.getString("Title"));
         holder.contentLabel.setText(note.getString("Note"));
+        Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "Roboto-Light.ttf");
+        Typeface tf2 = Typeface.createFromAsset(getContext().getAssets(),"RobotoSlab-Regular.ttf");
+        holder.titleLabel.setTypeface(tf);
+        holder.contentLabel.setTypeface(tf2);
+
         return convertView;
     }
     public static class ViewHolder

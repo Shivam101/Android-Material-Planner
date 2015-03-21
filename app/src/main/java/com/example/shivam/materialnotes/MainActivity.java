@@ -111,6 +111,10 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
         }
+        else if(id == R.id.action_search)
+        {
+
+        }
 
         return super.onOptionsItemSelected(item);
     }
