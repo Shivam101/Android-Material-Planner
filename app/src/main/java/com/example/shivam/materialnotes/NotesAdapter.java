@@ -2,6 +2,7 @@ package com.example.shivam.materialnotes;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ public class NotesAdapter extends ArrayAdapter<ParseObject> {
             holder = new ViewHolder();
             holder.titleLabel = (TextView) convertView.findViewById(R.id.noteTitle);
             holder.contentLabel = (TextView) convertView.findViewById(R.id.noteContent);
+            holder.noteHeader = (Toolbar)convertView.findViewById(R.id.toolbar);
             convertView.setTag(holder); //VERY IMPORTANT LINE !!!
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -46,13 +48,41 @@ public class NotesAdapter extends ArrayAdapter<ParseObject> {
         Typeface tf2 = Typeface.createFromAsset(getContext().getAssets(),"RobotoSlab-Regular.ttf");
         holder.titleLabel.setTypeface(tf);
         holder.contentLabel.setTypeface(tf2);
-
+        if(note.getString("Tag").equals("Blue"))
+        {
+            holder.noteHeader.setBackgroundResource(R.color.nliveo_blue_colorPrimary);
+        }
+        else if(note.getString("Tag").equals("Green"))
+        {
+            holder.noteHeader.setBackgroundResource(R.color.nliveo_green_colorPrimary);
+        }
+        else if(note.getString("Tag").equals("Indigo"))
+        {
+            holder.noteHeader.setBackgroundResource(R.color.nliveo_indigo_colorPrimary);
+        }
+        else if(note.getString("Tag").equals("Red"))
+        {
+            holder.noteHeader.setBackgroundResource(R.color.nliveo_red_colorPrimary);
+        }
+        else if(note.getString("Tag").equals("Orange"))
+        {
+            holder.noteHeader.setBackgroundResource(R.color.nliveo_orange_colorPrimary);
+        }
+        else if(note.getString("Tag").equals("Black"))
+        {
+            holder.noteHeader.setBackgroundResource(R.color.nliveo_black);
+        }
+        else if(note.getString("Tag").equals("Teal"))
+        {
+            holder.noteHeader.setBackgroundResource(R.color.nliveo_teal_colorPrimary);
+        }
         return convertView;
     }
     public static class ViewHolder
     {
         TextView titleLabel;
         TextView contentLabel;
+        Toolbar noteHeader;
     }
 
     public void refreshAdapter(List<ParseObject> notes)

@@ -73,18 +73,36 @@
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view_2"
             android:layout_below="@id/card_view"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:elevation="1dp"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             card_view:cardCornerRadius="2dp">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pick tag"
+                android:text="Pick a tag"
+                android:id="@+id/textv"
+                android:padding="20dp"
                 />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:id="@+id/tagSpinner"
+                android:layout_below="@+id/textv"
+                android:entries="@array/tag_arrays"
+                android:spinnerMode="dropdown"
+                ></Spinner>
+            </RelativeLayout>
+
+
         </android.support.v7.widget.CardView>
 
 

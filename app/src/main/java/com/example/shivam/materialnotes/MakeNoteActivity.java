@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -32,6 +33,7 @@ public class MakeNoteActivity extends ActionBarActivity {
     Toolbar toolbar;
     EditText mNote;
     MaterialEditText mTitle;
+    Spinner mTag;
     Dialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class MakeNoteActivity extends ActionBarActivity {
         getSupportActionBar().setTitle("");
         mTitle = (MaterialEditText)findViewById(R.id.noteTitle);
         mNote = (EditText)findViewById(R.id.noteText);
+        mTag = (Spinner)findViewById(R.id.tagSpinner);
         Slidr.attach(this);
         FloatingActionButton saveNote = (FloatingActionButton)findViewById(R.id.saveNote);
         saveNote.setOnClickListener(new View.OnClickListener() {
@@ -51,10 +54,12 @@ public class MakeNoteActivity extends ActionBarActivity {
             public void onClick(View v) {
                     String title = mTitle.getText().toString();
                     String note = mNote.getText().toString();
+                    String tag = mTag.getSelectedItem().toString();
                     if(title.isEmpty()||note.isEmpty())
                     {
                         Snackbar.with(getApplicationContext()).text("Your note isn't complete yet").show(MakeNoteActivity.this);
                         //Toast.makeText(MakeNoteActivity.this,"Your note isn't complete yet",Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MakeNoteActivity.this,tag,Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
@@ -62,6 +67,7 @@ public class MakeNoteActivity extends ActionBarActivity {
                         pobj.put("Title",title);
                         pobj.put("Note",note);
                         pobj.put("Author", ParseUser.getCurrentUser());
+                        pobj.put("Tag",tag);
                         MakeNoteActivity.this.progressDialog= ProgressDialog.show(MakeNoteActivity.this, "", "Saving your Note...", true);
                         pobj.saveInBackground(new SaveCallback() {
                             @Override
