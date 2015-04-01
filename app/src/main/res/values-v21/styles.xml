@@ -25,13 +25,13 @@
 
     <style name="menu_labels_style" parent="AppTheme">
         <item name="android:background">@drawable/fab_label_background</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/nliveo_black</item>
     </style>
 
     <style name="nLiveoDrawer" parent="nLiveo.Theme.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/nliveo_blue_colorPrimary</item>
-        <item name="colorPrimaryDark">@color/nliveo_blue_alpha_colorPrimaryDark</item>
+        <item name="colorPrimaryDark">#1976D2</item>
         <item name="colorAccent">@color/accentColor</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>

@@ -13,6 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.dexafree.materialList.cards.BasicImageButtonsCard;
+import com.dexafree.materialList.cards.BigImageButtonsCard;
+import com.dexafree.materialList.model.Card;
+import com.dexafree.materialList.view.MaterialListView;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -39,9 +43,14 @@ public class NotesFragment extends Fragment {
         mNotes = (FloatingActionButton) root.findViewById(R.id.make_notes);
         mReminders = (FloatingActionButton) root.findViewById(R.id.make_reminder);
         sb = (SearchBox)root.findViewById(R.id.searchBox);
+        //MaterialListView mListView = (MaterialListView) root.findViewById(R.id.material_listview);
+        //BasicImageButtonsCard card = new BasicImageButtonsCard(getActivity());
+        //card.setTitle("Your title");
+        //card.setDescription("Your description");
+        //mListView.add(card);
         mSwipeRefreshLayout = (SwipeRefreshLayout)root.findViewById(R.id.listRefresh);
         //setHasOptionsMenu(true);
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.refresh_blue,R.color.refresh_red);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.refresh_blue,R.color.refresh_red,R.color.refresh_green,R.color.refresh_yellow);
         sb.setLogoText("Search for notes or reminders");
 
         notesList = (ListView)root.findViewById(R.id.notesList);

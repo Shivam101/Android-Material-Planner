@@ -80,27 +80,29 @@
             android:layout_height="wrap_content"
             card_view:cardCornerRadius="2dp">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Pick a tag"
-                android:id="@+id/textv"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
                 android:padding="20dp"
+                >
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_color_lens_grey600_24dp"
                 />
 
-            <Spinner
+                <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
+                android:padding="10dp"
+                android:layout_marginLeft="30dp"
                 android:id="@+id/tagSpinner"
-                android:layout_below="@+id/textv"
                 android:entries="@array/tag_arrays"
                 android:spinnerMode="dropdown"
                 ></Spinner>
-            </RelativeLayout>
+            </LinearLayout>
 
 
         </android.support.v7.widget.CardView>
