@@ -60,6 +60,8 @@
             android:theme="@style/AppTheme"
             >
         </activity>
+        <service android:name="ReminderService" />
+        <service android:name="NotifyService" />
     </application>
 
 </manifest>
