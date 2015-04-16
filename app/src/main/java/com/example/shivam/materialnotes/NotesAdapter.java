@@ -22,7 +22,7 @@ public class NotesAdapter extends ArrayAdapter<ParseObject> {
     Context mContext;
     List<ParseObject> mNotes;
 
-    public NotesAdapter(Context context, List<ParseObject> notes) {
+    public NotesAdapter(Context context,int layoutResourceId, List<ParseObject> notes) {
         super(context,R.layout.notes_list_item, notes);
         mContext = context;
         mNotes = notes;

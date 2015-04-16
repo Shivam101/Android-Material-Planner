@@ -61,6 +61,8 @@
         android:singleLine="true"
         app:primaryColor="@color/accentColor"
         app:floatingLabel="highlight"
+        android:inputType="textPassword"
+        android:ellipsize="start"
         app:floatingLabelText="Password"
         android:layout_below="@id/usernameET"
         android:id="@+id/passwordET"

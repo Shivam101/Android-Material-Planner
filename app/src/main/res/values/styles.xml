@@ -9,7 +9,16 @@
             <item name="windowActionBar">false</item>
         </style>
 
+    <style name="AppTheme2" parent="AppTheme.Base">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+
         <!-- Customize your theme here. -->
+    </style>
+
+
+    <!-- Customize your theme here. -->
 
     <style name="menu_labels_style" parent="AppTheme">
         <item name="android:background">@drawable/fab_label_background</item>

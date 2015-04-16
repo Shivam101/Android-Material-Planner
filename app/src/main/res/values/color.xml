@@ -6,6 +6,7 @@
     <color name="accentColor">#FF5252</color>
     <color name="accentColorPressed">#e96767</color>
     <color name="white">#fafafa</color>
+    <color name="yellow_high">#FFEB3B</color>
     <color name="white_pressed">#f1f1f1</color>
     <color name="pink">#e91e63</color>
     <color name="pink_pressed">#ec407a</color>

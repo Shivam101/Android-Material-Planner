@@ -58,18 +58,17 @@ public class NotifyService extends Service {
      */
     private void showNotification() {
         // This is the 'title' of the notification
-        CharSequence title = "Reminder";
+        /*CharSequence title = "Reminder";
         // This is the icon to use on the notification
         int icon = R.drawable.ic_event_available_white_24dp;
         // This is the scrolling text of the notification
         CharSequence text = "You have a reminder which is due !";
         // What time to show on the notification
-        long time = System.currentTimeMillis();
 
         Notification notification = new Notification(icon, text, time);
+        notification.set
 
         // The PendingIntent to launch our activity if the user selects this notification
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
 
         // Set the info for the views that show in the notification panel.
         notification.setLatestEventInfo(this, title, text, contentIntent);
@@ -79,7 +78,19 @@ public class NotifyService extends Service {
 
         // Send the notification to the system.
         mNM.notify(NOTIFICATION, notification);
-
+*/
+        long time = System.currentTimeMillis();
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
+        Notification notification = new Notification.Builder(this)
+                // Show controls on lock screen even when user hides sensitive content.
+                .setVisibility(Notification.VISIBILITY_PUBLIC)
+                .setContentTitle("Reminder")
+                .setContentText("You have a reminder which is due !")
+                .setPriority(Notification.PRIORITY_HIGH)
+                .setWhen(time)
+                .setSmallIcon(R.drawable.ic_event_available_white_24dp)
+                .addAction(R.drawable.ic_snooze_white_24dp, "Reminder Later", contentIntent)
+                .build();
         // Stop the service when we are finished
         stopSelf();
     }

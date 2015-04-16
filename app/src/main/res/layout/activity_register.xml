@@ -62,6 +62,8 @@
         app:primaryColor="@color/accentColor"
         app:floatingLabel="highlight"
         app:floatingLabelText="Password"
+        android:inputType="textPassword"
+        android:ellipsize="start"
         android:layout_below="@id/setusernameET"
         android:id="@+id/setpasswordET"
         android:layout_marginLeft="20dp"

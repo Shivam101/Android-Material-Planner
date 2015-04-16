@@ -38,14 +38,17 @@ public class MakeReminderActivity extends ActionBarActivity implements DatePicke
 
     Toolbar toolbar;
     public static final String DATEPICKER_TAG = "datepicker";
-    TextView dateTV;
+    public static final String TIMEPICKER_TAG = "timepicker";
+    TextView dateTV,timeTV;
     SimpleDateFormat formatter = new SimpleDateFormat("MMM dd, yyy");
+    SimpleDateFormat formatter2 = new SimpleDateFormat("EEE, d MMM yyyy HH:mm");
     Date dateObj;
     public Dialog progressDialog;
     MaterialEditText mTitle;
     Spinner mTag;
     ReminderClient reminderClient;
     Calendar c;
+    int y,m,d;
 
 
     @Override
@@ -56,7 +59,8 @@ public class MakeReminderActivity extends ActionBarActivity implements DatePicke
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp);
-        dateTV = (TextView)findViewById(R.id.reminderTime);
+        dateTV = (TextView)findViewById(R.id.reminderDate);
+        timeTV = (TextView)findViewById(R.id.reminderTime);
         mTitle = (MaterialEditText)findViewById(R.id.reminderTitle);
         reminderClient = new ReminderClient(this);
         reminderClient.doBindService();
@@ -64,12 +68,18 @@ public class MakeReminderActivity extends ActionBarActivity implements DatePicke
         FloatingActionButton saveReminder = (FloatingActionButton)findViewById(R.id.saveReminder);
         final Calendar calendar = Calendar.getInstance();
         final DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(this, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-
+        final TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(this, calendar.get(Calendar.HOUR_OF_DAY) ,calendar.get(Calendar.MINUTE), false, false);
         dateTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 datePickerDialog.setYearRange(1985, 2028);
                 datePickerDialog.show(getSupportFragmentManager(), DATEPICKER_TAG);
+            }
+        });
+        timeTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                timePickerDialog.show(getSupportFragmentManager(), TIMEPICKER_TAG);
             }
         });
 
@@ -89,7 +99,7 @@ public class MakeReminderActivity extends ActionBarActivity implements DatePicke
                     pobj.put("Author", ParseUser.getCurrentUser());
                     pobj.put("Tag",tag);
                     pobj.put("Reminder",title);
-                    pobj.put("DueDate",dateObj);
+                    pobj.put("DueDate",c.getTime());
                     MakeReminderActivity.this.progressDialog= ProgressDialog.show(MakeReminderActivity.this, "", "Setting your reminder...", true);
                     pobj.saveInBackground(new SaveCallback() {
                         @Override
@@ -98,7 +108,7 @@ public class MakeReminderActivity extends ActionBarActivity implements DatePicke
                             {
                                 reminderClient.setAlarmForNotification(c);
                                 MakeReminderActivity.this.progressDialog.dismiss();
-                                Toast.makeText(MakeReminderActivity.this, "Reminder Saved Successfully !", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MakeReminderActivity.this, "Reminder set for "+formatter2.format(c.getTime()), Toast.LENGTH_SHORT).show();
                                 Intent i = new Intent(MakeReminderActivity.this,MainActivity.class);
                                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -173,16 +183,22 @@ public class MakeReminderActivity extends ActionBarActivity implements DatePicke
             e.printStackTrace();
         }
         String dateStr = formatter.format(dateObj);
-        c = Calendar.getInstance();
-        c.set(year, month, day);
-        c.set(Calendar.HOUR_OF_DAY, 14);
-        c.set(Calendar.MINUTE, 35);
-        c.set(Calendar.SECOND, 0);
+        y = year;
+        m = month;
+        d = day;
         dateTV.setText(dateStr);
+
+
     }
 
     @Override
-    public void onTimeSet(RadialPickerLayout radialPickerLayout, int i, int i2) {
-
+    public void onTimeSet(RadialPickerLayout radialPickerLayout, int hourOfDay, int minute) {
+        String timeStr = hourOfDay + ":" + minute;
+        timeTV.setText(timeStr);
+        c = Calendar.getInstance();
+        c.set(y, m, d);
+        c.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        c.set(Calendar.MINUTE, minute);
+        //c.set(Calendar.SECOND, 0);
     }
 }

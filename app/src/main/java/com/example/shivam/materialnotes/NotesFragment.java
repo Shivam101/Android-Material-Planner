@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,6 +21,8 @@ import com.dexafree.materialList.cards.BigImageButtonsCard;
 import com.dexafree.materialList.model.Card;
 import com.dexafree.materialList.view.MaterialListView;
 import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.nineoldandroids.view.ViewHelper;
+import com.nineoldandroids.view.ViewPropertyAnimator;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -37,12 +42,17 @@ public class NotesFragment extends Fragment {
     ListView notesList;
     SearchBox sb;
     List<ParseObject> notes;
+    private int mBaseTranslationY;
     NotesAdapter mAdapter;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_notes, null);
         mNotes = (FloatingActionButton) root.findViewById(R.id.make_notes);
         mReminders = (FloatingActionButton) root.findViewById(R.id.make_reminder);
         sb = (SearchBox)root.findViewById(R.id.searchBox);
+
+        final ActionBar ab = ((ActionBarActivity)getActivity()).getSupportActionBar();
+        //ab.setCustomView((View)ab);
+
         //MaterialListView mListView = (MaterialListView) root.findViewById(R.id.material_listview);
         //BasicImageButtonsCard card = new BasicImageButtonsCard(getActivity());
         //card.setTitle("Your title");
@@ -54,6 +64,54 @@ public class NotesFragment extends Fragment {
         sb.setLogoText("Search for notes or reminders");
 
         notesList = (ListView)root.findViewById(R.id.notesList);
+        /*notesList.setScrollViewCallbacks(new ObservableScrollViewCallbacks() {
+            @Override
+            public void onScrollChanged(int scrollY, boolean firstScroll, boolean dragging) {
+                int toolbarHeight = ab.getHeight();
+                if (dragging || scrollY < toolbarHeight) {
+                    if (firstScroll) {
+                        float currentHeaderTranslationY = ViewHelper.getTranslationY(ab.getCustomView());
+                        if (-toolbarHeight < currentHeaderTranslationY && toolbarHeight < scrollY) {
+                            mBaseTranslationY = scrollY;
+                        }
+                    }
+                    float headerTranslationY = ScrollUtils.getFloat(-(scrollY - mBaseTranslationY), -toolbarHeight, 0);
+                    ViewPropertyAnimator.animate(ab.getCustomView()).cancel();
+                    ViewHelper.setTranslationY(ab.getCustomView(), headerTranslationY);
+                }
+
+            }
+
+            @Override
+            public void onDownMotionEvent() {
+
+            }
+
+            @Override
+            public void onUpOrCancelMotionEvent(ScrollState scrollState) {
+                mBaseTranslationY = 0;
+
+                float headerTranslationY = ViewHelper.getTranslationY(ab.getCustomView());
+                int toolbarHeight = ab.getHeight();
+                if (scrollState == ScrollState.UP) {
+                    if (toolbarHeight < notesList.getCurrentScrollY()) {
+                        if (headerTranslationY != -toolbarHeight) {
+                            ViewPropertyAnimator.animate(ab.getCustomView()).cancel();
+                            ViewPropertyAnimator.animate(ab.getCustomView()).translationY(-toolbarHeight).setDuration(200).start();
+                        }
+                    }
+                } else if (scrollState == ScrollState.DOWN) {
+                    if (toolbarHeight < notesList.getCurrentScrollY()) {
+                        if (headerTranslationY != 0) {
+                            ViewPropertyAnimator.animate(ab.getCustomView()).cancel();
+                            ViewPropertyAnimator.animate(ab.getCustomView()).translationY(0).setDuration(200).start();
+                        }
+                    }
+                }
+
+
+            }
+        });*/
         refreshNotes();
 
         mNotes.setOnClickListener(new View.OnClickListener() {
@@ -118,7 +176,7 @@ public class NotesFragment extends Fragment {
 
     public void onResume() {
         super.onResume();
-        getActivity().setProgressBarIndeterminateVisibility(true);
+       // getActivity().setProgressBarIndeterminateVisibility(true);
         //List<ParseQuery<ParseObject>> queries = new ArrayList<ParseQuery<ParseObject>>();
         refreshNotes();
     }
@@ -150,7 +208,7 @@ public class NotesFragment extends Fragment {
         noteQuery.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> parseObjects, ParseException e) {
-                getActivity().setProgressBarIndeterminateVisibility(false);
+//                getActivity().setProgressBarIndeterminateVisibility(false);
                 if(mSwipeRefreshLayout.isRefreshing()) {
                     mSwipeRefreshLayout.setRefreshing(false);
                 }
@@ -161,7 +219,7 @@ public class NotesFragment extends Fragment {
                     //int i = 0;
                     if(notesList.getAdapter()==null)
                     {
-                        mAdapter = new NotesAdapter(getActivity(), notes);
+                        mAdapter = new NotesAdapter(getActivity(),R.layout.notes_list_item, notes);
                         notesList.setAdapter(mAdapter);
                     }
                     else
