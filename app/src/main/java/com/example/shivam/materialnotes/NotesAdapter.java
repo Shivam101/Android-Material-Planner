@@ -20,7 +20,7 @@ import java.util.List;
 public class NotesAdapter extends ArrayAdapter<ParseObject> {
 
     Context mContext;
-    List<ParseObject> mNotes;
+    List<ParseObject> mNotes=null;
 
     public NotesAdapter(Context context,int layoutResourceId, List<ParseObject> notes) {
         super(context,R.layout.notes_list_item, notes);

@@ -43,7 +43,7 @@ public class NotesFragment extends Fragment {
     SearchBox sb;
     List<ParseObject> notes;
     private int mBaseTranslationY;
-    NotesAdapter mAdapter;
+    NotesAdapter mAdapter = null;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_notes, null);
         mNotes = (FloatingActionButton) root.findViewById(R.id.make_notes);
