@@ -40,7 +40,6 @@ public class MainActivity extends NavigationLiveo implements NavigationLiveoList
         this.setDefaultStartPositionNavigation(0);
         this.removeSelectorNavigation();
         this.setColorSelectedItemNavigation(R.color.nliveo_blue_colorPrimary);
-        mListNameItem = new ArrayList<>();
         mListNameItem.add(0, "Notes");
         mListNameItem.add(1, "Reminders");
         mListNameItem.add(2, "Upcoming Events");

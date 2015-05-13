@@ -20,8 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/searchBox"
         android:paddingBottom="8dp"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         android:paddingTop="8dp"
         >
 
